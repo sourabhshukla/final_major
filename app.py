@@ -5,6 +5,7 @@ import sklearn
 from flask import Flask, request, jsonify
 import numpy as np
 import pandas as pd
+from flask_cors import cross_origin
 
 pd.options.mode.chained_assignment = None
 
@@ -22,6 +23,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['POST'])
+@cross_origin()
 def index():
     if request.method == 'POST':
         f = request.files['file']
